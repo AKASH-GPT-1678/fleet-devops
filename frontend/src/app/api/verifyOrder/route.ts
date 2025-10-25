@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     if (generatedSignature === razorpay_signature) {
       console.log("token", token);
 
-      // Run the premium update AFTER sending the response
+     
       after(async () => {
         try {
           await updatePremiumStatus(token);
