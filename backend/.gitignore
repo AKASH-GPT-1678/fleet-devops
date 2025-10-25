@@ -1,0 +1,9 @@
+node_modules
+.env
+/generated/prisma
+output
+
+/generated/prisma
+docker-compose.yml
+fleetops-464008-e4e6f94b9da1.json
+/generated/prisma
