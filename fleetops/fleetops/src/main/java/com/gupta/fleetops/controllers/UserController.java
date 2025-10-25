@@ -54,7 +54,7 @@ public class UserController {
     public TokenResponseDTO checkToken(){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
+   
         TokenResponseDTO response = new TokenResponseDTO();
 
         if (authentication.isAuthenticated()){

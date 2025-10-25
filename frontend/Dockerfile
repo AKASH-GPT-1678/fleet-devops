@@ -1,4 +1,3 @@
-# Use the official Node.js runtime as the base image
 FROM node:22-alpine AS base
 
 # Install dependencies only when needed
@@ -31,7 +30,7 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-# Production image, copy all the files and run next
+
 FROM base AS runner
 WORKDIR /app
 
@@ -53,9 +52,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/package*.json ./
 
 USER nextjs
 
-EXPOSE 3500
+EXPOSE 3000
 
-ENV PORT=3500
+
 ENV HOSTNAME="0.0.0.0"
 
 # Run the application

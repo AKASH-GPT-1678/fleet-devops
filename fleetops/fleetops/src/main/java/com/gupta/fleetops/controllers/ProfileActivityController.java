@@ -1,10 +1,8 @@
 package com.gupta.fleetops.controllers;
 
 
-import com.gupta.fleetops.entity.User;
 import com.gupta.fleetops.io.ProfileResponse;
 import com.gupta.fleetops.service.ProfileService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

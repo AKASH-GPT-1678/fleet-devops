@@ -12,7 +12,6 @@ import com.gupta.fleetops.repository.CompanyRepository;
 import com.gupta.fleetops.repository.UserRepository;
 import com.gupta.fleetops.repository.VehicleRepository;
 import com.gupta.fleetops.service.VehicleService;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
