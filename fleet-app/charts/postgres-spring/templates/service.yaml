@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "postgres-spring.fullname" . }}
+  labels:
+    {{- include "postgres-spring.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 5432
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "postgres-spring.selectorLabels" . | nindent 4 }}
