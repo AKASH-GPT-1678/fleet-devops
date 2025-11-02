@@ -1,6 +1,6 @@
 // app/api/location/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import redis from '@/app/utils/redis';
+import redis from '../../utils/redis';
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

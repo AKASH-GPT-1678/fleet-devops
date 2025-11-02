@@ -7,7 +7,7 @@ import { MdOutlineForwardToInbox } from "react-icons/md";
 import { FaTruck } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdLocalShipping } from 'react-icons/md';
-import { useUserStore } from '../../component/zustand';
+import { useUserStore } from '../app/component/zustand';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 type DeliverySummary = {
