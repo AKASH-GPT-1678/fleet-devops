@@ -52,7 +52,7 @@ spec:
 
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
+              mountPath: postgresql/data
 
           {{- with .Values.resources }}
           resources:

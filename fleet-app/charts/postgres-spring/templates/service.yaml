@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 5432
+      targetPort: 542
       protocol: TCP
-      name: http
+      name: postgres
   selector:
     {{- include "postgres-spring.selectorLabels" . | nindent 4 }}

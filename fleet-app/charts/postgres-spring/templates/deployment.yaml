@@ -44,7 +44,6 @@ spec:
             - name: postgres
               containerPort: 5432
               protocol: TCP
-
           env:
             - name: POSTGRES_USER
               value: {{ .Values.postgres.user | quote }}
@@ -52,16 +51,19 @@ spec:
               value: {{ .Values.postgres.password | quote }}
             - name: POSTGRES_DB
               value: {{ .Values.postgres.database | quote }}
-
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
+              mountPath: /postgresql/data2
 
-          
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-            claimName: postgres-spring-pvc
+            claimName: postgrespring-pvc
+      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
