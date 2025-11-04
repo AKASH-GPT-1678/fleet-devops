@@ -9,9 +9,9 @@ replicaCount: 1
 image:
   repository: akashgpt123/fleets-backend
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v3"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
@@ -54,7 +54,7 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
+  port: 8080
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
@@ -75,7 +75,8 @@ ingress:
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
+  # choice fo
+  #r the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
@@ -109,6 +110,79 @@ volumes: []
 #   secret:
 #     secretName: mysecret
 #     optional: false
+
+env:
+  - name: AWS_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: AWS_ACCESS_KEY
+
+  - name: AWS_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: AWS_SECRET_KEY
+
+  - name: AWS_REGION
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: AWS_REGION
+
+  - name: DB_HOST
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: DB_HOST
+
+  - name: DB_PORT
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: DB_PORT
+
+  - name: DB_NAME
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: DB_NAME
+
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: DB_USER
+
+  - name: DB_PASS
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: DB_PASS
+
+  - name: REDIS_HOST
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: REDIS_HOST
+
+  - name: REDIS_PORT
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: REDIS_PORT
+
+  - name: REDIS_PASS
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: REDIS_PASS
+
+  - name: KAFKA_SERVER
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: KAFKA_SERVER
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
